@@ -1,0 +1,22 @@
+vector<int> minPartition(int n)
+    {
+        vector<int>coins={1,2,5,10,20,50,100,200,500,2000};
+        int len=coins.size();
+        vector<int>ans;
+        for(int i=len-1;i>=0;i--)
+        {
+            if(n>=coins[i])
+            {
+                int mul=n/coins[i];
+               // cout<<mul<<endl;
+                int rem=n%coins[i];
+                while(mul--)
+                {
+                    ans.push_back(coins[i]);
+                }
+                n=rem;
+            }
+            if(n==0) break;
+        }
+        return ans;
+    }
